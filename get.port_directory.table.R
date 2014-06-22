@@ -3,11 +3,16 @@
 library('stringr')
 
 data.list = list()
+# 
+# data.list length is set here and used throughout!
+# 
 length(data.list) = 114
+
+
 
 data.list[[1]] = readLines("http://www.port-directory.com/ports/list/")
 
-for (i in 2:114) {
+for (i in 2:length(data.list)) {
   
   txt = paste0("http://www.port-directory.com/ports/list/P", 40*(i-1))
   # print(txt)
@@ -18,9 +23,9 @@ for (i in 2:114) {
 rm(txt)
 
 data.list2 = list()
-length(data.list2) = 114
+length(data.list2) = length(data.list)
 
-for (i in 1:114) {
+for (i in 1:length(data.list)) {
   
   content = as.matrix(data.list[[i]])
   country.lines = which(str_detect(content, '<img src="/images/spacer.png" width="16" height="24" alt="'))
@@ -54,7 +59,7 @@ for (i in 1:114) {
 
 rm(data.list)
 
-for (i in 2:114) {
+for (i in 2:length(data.list2)) {
   
   data.list2[[1]] = rbind(data.list2[[1]], data.list2[[i]])  
   
@@ -67,19 +72,22 @@ rm(data.list2)
 # port.data.frame$country = as.character(port.data.frame$country)
 # port.data.frame$port = as.character(port.data.frame$port)
 # port.data.frame$url = as.character(port.data.frame$url)
-# port.data.frame$url[13] = 'http://www.port-directory.com/ports/Aberdeen_UK'
-# port.data.frame$url[14] = 'http://www.port-directory.com/ports/Aberdeen_US'
 
 
 port.data.more = as.data.frame(matrix(nrow = length(port.data.frame[, 1]), ncol = 15))
-names(port.data.more) = c('longitude', 'latitude', 'timezone', 'portcode', 'portdepth', 
+names(port.data.more) = c('longitude', 'latitude', 'timezone', 'portcode', 'maxportdepth', 
                           'is.drybulk', 'is.roro', 'is.drydock', 'is.towage', 'is.airport',
                           'is.generalcargobulk', 'is.bunkers', 'is.otherliquid', 
                           'is.containers', 'is.petroleum')
 
 for (i in 1:length(port.data.frame[, 1])) {
   
+  # 
+  # print index to follow execution...
+  # and pause 0.25 second not to overwhelm the target server
+  # 
   print(i)
+  Sys.sleep(0.25)
   
   port.page = readLines(as.character(port.data.frame$url[i]))
   
@@ -107,7 +115,7 @@ for (i in 1:length(port.data.frame[, 1])) {
     if (sum(str_detect(port.page, 'UN/LOCODE')) != 0) {port.data.more$portcode[i] = str_replace(str_replace(port.page[code.line], '\t      <tr><td>UN/LOCODE:</td><td>', ''), '</td></tr>\t\t\t\t\t\t', '')}
     
     depth.line = which(str_detect(port.page, 'Max&nbsp;depth'))
-    if (sum(str_detect(port.page, 'Max&nbsp;depth')) != 0) {port.data.more$portdepth[i] = str_replace(str_replace(port.page[depth.line], '\t      <tr><td>Max&nbsp;depth:</td><td>', ''), 'm</td></tr>\t\t\t\t\t\t', '')}
+    if (sum(str_detect(port.page, 'Max&nbsp;depth')) != 0) {port.data.more$maxportdepth[i] = str_replace(str_replace(port.page[depth.line], '\t      <tr><td>Max&nbsp;depth:</td><td>', ''), 'm</td></tr>\t\t\t\t\t\t', '')}
     
     facilities.line = which(str_detect(port.page, '<div id="facilities">'))
     
