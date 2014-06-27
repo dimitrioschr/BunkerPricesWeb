@@ -1,6 +1,6 @@
 http://www.bunkerworld.com/prices/
-http://shipandbunker.com/prices
-http://www.bunkerindex.com/
+http://shipandbunker.com/prices   ***
+http://www.bunkerindex.com/       ***
 http://www.wilhelmsen.com/services/maritime/companies/wpmf/TradingandHedging/Pages/Prices.aspx
 http://www.worldbunkering.com/prices.asp
 http://www.transoil-holdings.com/
