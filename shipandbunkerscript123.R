@@ -15,6 +15,8 @@ names(num.data) = c('IFO380', 'IFO180', 'MDO', 'MGO', 'LS380', 'LS180', 'LSMDO',
 
 for (i in 1:length.page.list) {
   
+  print(i)
+  Sys.sleep(0.25)
   
   page.content = readLines(as.character(page.list[i, 2]))
   
@@ -25,11 +27,12 @@ for (i in 1:length.page.list) {
   ))[1]
   
   country.line = which(str_detect(page.content, 'style="padding:0 0 0 5px !important; color: #929697;'))
+  if (length(country.line) != 0) {
   text.data$country[i] = unlist(str_split(
     unlist(str_split(page.content[country.line], 'important; color: #929697;">\\('))[2],
     ')</a>'
   ))[1]
-  
+  } else {text.data$country[i] = text.data$port[i]}
   
   IFO380.line = which(str_detect(page.content, 'row-0-IFO380'))
   if (length(IFO380.line) != 0) {
@@ -105,3 +108,5 @@ for (i in 1:length.page.list) {
   
   
 }
+
+shipandbunker.table = cbind(page.list, text.data, num.data)
