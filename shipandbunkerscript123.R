@@ -1,4 +1,4 @@
-source('~/RStudio/BunkerPricesWeb/create.port.list.R', echo=FALSE)
+source('~/Documents/RStudio/BunkerPricesWeb/create.port.list.R')
 
 page.list = create.port.list()
 
@@ -13,10 +13,14 @@ names(num.data) = c('IFO380', 'IFO180', 'MDO', 'MGO', 'LS380', 'LS180', 'LSMDO',
 # num.data[, 1:8] = as.numeric(num.data[, 1:8])
 
 
+# 1:73
+# 74: 118
+# 119:156 (end)
+
 for (i in 1:length.page.list) {
   
   print(i)
-  Sys.sleep(0.25)
+  Sys.sleep(60)
   
   page.content = readLines(as.character(page.list[i, 2]))
   
