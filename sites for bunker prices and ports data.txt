@@ -4,17 +4,14 @@ http://www.bunkerindex.com/       	***
 http://www.wilhelmsen.com/services/maritime/companies/wpmf/TradingandHedging/Pages/Prices.aspx
 http://www.worldbunkering.com/prices.asp
 http://www.transoil-holdings.com/
-<<<<<<< HEAD
 http://www.bunkerportsnews.com/BunkerPrices.aspx?ElementId=1577b498-8302-4be7-ba8f-0e7e907eba9a ***
 http://www.marine-news.net/bunkers
 http://navigatemag.ru/bunker/
 http://www.port-directory.com/  ***
-=======
 http://www.bunkerportsnews.com/BunkerPrices.aspx?ElementId=1577b498-8302-4be7-ba8f-0e7e907eba9a			***
 http://www.marine-news.net/bunkers
 http://navigatemag.ru/bunker/
 http://www.port-directory.com/		***
->>>>>>> 2b2233898bde624e1c47477242f36e95b94eec2a
 
 
 http://www.platts.com/Shipping/BunkerFuel/?WT.srch=1
