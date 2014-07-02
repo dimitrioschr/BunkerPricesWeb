@@ -1,6 +1,6 @@
 get.navigatemag.prices = function() {
     
-  require(stringr)
+  library(stringr)
   
   results.data.frame = as.data.frame(matrix(nrow=1, ncol=7))
   results.data.frame[, ] = as.numeric(results.data.frame[, ])
