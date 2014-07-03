@@ -24,6 +24,10 @@ for (i in 1:length(bunkerindex.table.new$port)) {
 bunkerindex.table.new.lookup
 
 which(sapply(bunkerindex.table.new.lookup, length) > 1)
+which(sapply(bunkerindex.table.new.lookup, 
+             function(x) {ifelse(length(x) == 1, 
+                                 yes = ifelse(is.na(x), yes = TRUE, no = FALSE), 
+                                 no = FALSE)}) == 1)
 
 
 ###########################################################################
@@ -48,6 +52,10 @@ for (i in 1:length(bunkerportsnews.table.new$port)) {
 bunkerportsnews.table.new.lookup
 
 which(sapply(bunkerportsnews.table.new.lookup, length) > 1)
+which(sapply(bunkerportsnews.table.new.lookup, 
+             function(x) {ifelse(length(x) == 1, 
+                                 yes = ifelse(is.na(x), yes = TRUE, no = FALSE), 
+                                 no = FALSE)}) == 1)
 
 
 ###########################################################################
@@ -68,6 +76,10 @@ for (i in 1:length(navigatemag.table.new$port)) {
 navigatemag.table.new.lookup
 
 which(sapply(navigatemag.table.new.lookup, length) > 1)
+which(sapply(navigatemag.table.new.lookup, 
+             function(x) {ifelse(length(x) == 1, 
+                                 yes = ifelse(is.na(x), yes = TRUE, no = FALSE), 
+                                 no = FALSE)}) == 1)
 
 
 ###########################################################################
@@ -88,6 +100,10 @@ for (i in 1:length(marine.news.table.new$port)) {
 marine.news.table.new.lookup
 
 which(sapply(marine.news.table.new.lookup, length) > 1)
+which(sapply(marine.news.table.new.lookup, 
+             function(x) {ifelse(length(x) == 1, 
+                                 yes = ifelse(is.na(x), yes = TRUE, no = FALSE), 
+                                 no = FALSE)}) == 1)
 
 
 ###########################################################################
