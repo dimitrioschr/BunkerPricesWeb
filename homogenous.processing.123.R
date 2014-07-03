@@ -108,3 +108,26 @@ which(sapply(marine.news.table.new.lookup,
 
 ###########################################################################
 
+shipandbunker.table.new.lookup = list()
+length(shipandbunker.table.new.lookup) = 
+  length(shipandbunker.table.new$port)
+
+for (i in 1:length(shipandbunker.table.new$port)) {
+  lookup.value = which(port_directory.table$port == shipandbunker.table.new$port[i])
+  if (!(length(lookup.value) == 0)) {
+    shipandbunker.table.new.lookup[[i]] = lookup.value
+  } else {
+    shipandbunker.table.new.lookup[[i]] = NA
+  }
+}
+
+shipandbunker.table.new.lookup
+
+which(sapply(shipandbunker.table.new.lookup, length) > 1)
+which(sapply(shipandbunker.table.new.lookup, 
+             function(x) {ifelse(length(x) == 1, 
+                                 yes = ifelse(is.na(x), yes = TRUE, no = FALSE), 
+                                 no = FALSE)}) == 1)
+
+
+###########################################################################
