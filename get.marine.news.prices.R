@@ -16,6 +16,9 @@ get.marine.news.prices = function() {
     bunkers[, i] = as.numeric(as.character(bunkers[, i]))
   }
   
+  names(bunkers) = c('port', 'IFO380', 'IFO180', 'MDO', 'MGO')
+  bunkers$port = as.character(bunkers$port)
+  
   return(bunkers)
   
 }

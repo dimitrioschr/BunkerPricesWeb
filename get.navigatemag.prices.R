@@ -7,7 +7,7 @@ get.navigatemag.prices = function() {
   results.data.frame[, 1] =as.character(results.data.frame[, 1])
   results.data.frame[, 6] =as.logical(results.data.frame[, 6])
   results.data.frame[, 7] =as.character(results.data.frame[, 1])
-  names(results.data.frame) = c('port.name', 'IFO380.price', 'IFO180.price', 
+  names(results.data.frame) = c('port', 'IFO380.price', 'IFO180.price', 
                                 'MDO.price', 'MGO.price', 'all.na', 'region')
   
   for (i in 0:5) {
@@ -26,15 +26,15 @@ get.navigatemag.prices = function() {
     for (j in 3:length(table)) {
       
       port.entry = str_replace_all(unlist(str_split(table[j], 'td>')), '</', '')
-      port.name = port.entry[1]
-      port.name = str_replace_all(port.name, "[.',]", "")
+      port = port.entry[1]
+      port = str_replace_all(port, "[.',]", "")
       IFO180.price = as.numeric(unlist(str_split(port.entry[5], '&nbsp'))[1])
       IFO380.price = as.numeric(unlist(str_split(port.entry[9], '&nbsp'))[1])
       MGO.price = as.numeric(unlist(str_split(port.entry[13], '&nbsp'))[1])
       MDO.price = as.numeric(unlist(str_split(port.entry[17], '&nbsp'))[1])
       all.na = is.na(IFO180.price) & is.na(IFO380.price) & 
         is.na(MGO.price) & is.na(MDO.price)
-      row.to.bind = data.frame(port.name, IFO380.price, IFO180.price, 
+      row.to.bind = data.frame(port, IFO380.price, IFO180.price, 
                                MDO.price, MGO.price, all.na, region)
       results.data.frame = rbind(results.data.frame, row.to.bind)
       
