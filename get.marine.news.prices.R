@@ -16,7 +16,16 @@ get.marine.news.prices = function() {
     bunkers[, i] = as.numeric(as.character(bunkers[, i]))
   }
   
-  names(bunkers) = c('port', 'IFO380', 'IFO180', 'MDO', 'MGO')
+  to.add = matrix(nrow = dim(bunkers)[1], ncol = 4)
+  to.add = as.data.frame(to.add)
+  bunkers = cbind(bunkers, to.add)
+  for (i in 6:9) {
+    bunkers[, i] = as.numeric(bunkers[, i])
+  }
+  
+  names(bunkers) = c('port', 'IFO380', 'IFO180', 'MDO', 'MGO', 
+                     'LS380', 'LS180', 'LSMDO', 'LSMGO')
+  
   bunkers$port = as.character(bunkers$port)
   
   return(bunkers)
