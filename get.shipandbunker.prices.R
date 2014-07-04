@@ -2,7 +2,7 @@ get.shipandbunker.prices = function() {
   
   library(RCurl)
   library(stringr)
-  source('~/RStudio/BunkerPricesWeb/create.port.list.R')
+  source('C:/Users/operation3/Jimis/BunkerPricesWeb/create.port.list.R')
   
   page.list = create.port.list()
   length.page.list = length(page.list[, 1])
@@ -116,5 +116,6 @@ get.shipandbunker.prices = function() {
   }
   
   shipandbunker.table = cbind(page.list, text.data, num.data)
+  shipandbunker.table = shipandbunker.table[, c(3, 5:12)]
   
 }
