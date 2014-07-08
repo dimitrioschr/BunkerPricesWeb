@@ -251,6 +251,11 @@ get.bunkerindex.prices = function() {
   
   bunkerindex.table = rbind(bunkerindex.table, add.data.frame)
   
+  for (i in 2:9) {
+    
+    bunkerindex.table[, i] = as.numeric(bunkerindex.table[, i])
+    
+  }
   
   return(bunkerindex.table)
   

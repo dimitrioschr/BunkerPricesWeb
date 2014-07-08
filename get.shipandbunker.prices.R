@@ -2,7 +2,7 @@ get.shipandbunker.prices = function() {
   
   library(RCurl)
   library(stringr)
-  source('C:/Users/operation3/Jimis/BunkerPricesWeb/create.port.list.R')
+  source('~/BunkerPricesWeb/create.port.list.R')
   
   page.list = create.port.list()
   length.page.list = length(page.list[, 1])
